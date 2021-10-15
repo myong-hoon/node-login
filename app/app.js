@@ -33,5 +33,8 @@ app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
 app.use("/", home); // use = 미들웨어 등록 메서드
-
+app.use(express.static(`${__dirname}/src/public`));
+app.use(express.json());
+//url을 통해 전달되는 데이터에 한글 공백 같은 데이터가 문제되는것을 해결
+app.use(express.urlencoded({ extended: true }));
 module.exports = app;
